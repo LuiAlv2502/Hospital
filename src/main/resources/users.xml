@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<usersWrapper>
+    <admin>
+        <name>juan</name>
+        <id>1234</id>
+        <password>123</password>
+        <role>Admin</role>
+    </admin>
+</usersWrapper>
