@@ -18,6 +18,15 @@ public class LoginView extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         add(panel);
+        passwordField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+
+        // Hacer que el registroLink se vea como hipervínculo
+        registroLink.setText("<html><a href=''>Registrarse</a></html>");
+        registroLink.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        recuperaPassword.setText("<html><a href=''>¿Olvidaste tu contraseña?</a></html>");
+        recuperaPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     public static void main(String[] args) {
@@ -26,4 +35,10 @@ public class LoginView extends JFrame {
             loginView.setVisible(true);
         });
     }
+    public JTextField getTxtName() { return textField1; }
+    public JPasswordField getTxtPassword() { return passwordField1; }
+    public JButton getBtnLogin() { return ingresarButton; }
+    public JLabel getRegistroLink() { return registroLink; }
+    public JLabel getRecuperaPassword() { return recuperaPassword; }
+
 }
