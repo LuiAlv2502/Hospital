@@ -1,5 +1,4 @@
 package org.example.View;
-import org.example.Module.AbstractUser;
 
 import javax.swing.*;
 
@@ -8,14 +7,15 @@ public class RegisterView extends JFrame{
     private JLabel apellidos;
     private JLabel nombre;
     private JLabel email;
-    private JTextField textField1;
+    private JTextField nombreTextfield;
     private JButton ingresarButton;
     private JPasswordField passwordField1;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField idtextField;
+    private JTextField EspecialidadtextField;
     private JPasswordField passwordField2;
     private JButton registrarseButton;
-    private JComboBox comboBox1;
+    private JComboBox comboBoxRol;
+    private JTextField Fecha;
     private JLabel registroLink;
         private JLabel recuperaPassword;
         private JLabel contra;
@@ -39,20 +39,40 @@ public class RegisterView extends JFrame{
     public AbstractButton getRegistrarseButton() {
         return registrarseButton;
     }
-    public JTextField getTxtName() { return textField1; }
-    public JPasswordField getTxtPassword() { return passwordField1; }
-    public JTextField getTxtApellido() { return textField2; }
-    public JTextField getTxtEmail() { return textField3; }
-    public JPasswordField getTxtPassword2() { return passwordField2; }
-    public JComboBox getRoleComboBox() { return comboBox1; }
+
 
 
     public JComponent getRegistroLink() {
         return registroLink;
     }
+    public JTextField getNombreTextfield() {
+        return nombreTextfield;
+    }
+    public JTextField getIdtextField() {
+        return idtextField;
+    }
+    public JTextField getEspecialidadtextField() {
+        return EspecialidadtextField;
+    }
+    public JButton getIngresarButton() {
+        return ingresarButton;
+    }
+    public JPasswordField getPasswordField1() {
+        return passwordField1;
+    }
+    public JPasswordField getPasswordField2() {
+        return passwordField2;
+    }
+    public String getComboBoxRol() {
+        return comboBoxRol.getSelectedItem().toString();
+    }
+    public JTextField getFecha() {
+        return Fecha;
+    }
+
 
     public JTextField getTxtConfirmPassword() {
-        return textField3;
+        return EspecialidadtextField;
     }
 
 }
