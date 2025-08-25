@@ -1,16 +1,15 @@
 package org.example.View;
 import javax.swing.*;
-import java.awt.*;
 
 public class LoginView extends JFrame {
     private JPanel panel;
     private JLabel nombre;
     private JTextField textField1;
-    private JTextField textField2;
-    private JTextArea textArea1;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private JButton ingresarButton;
+    private JPasswordField passwordField1;
+    private JLabel registroLink;
+    private JLabel recuperaPassword;
+    private JLabel contra;
 
     public LoginView() {
         setTitle("Login");
