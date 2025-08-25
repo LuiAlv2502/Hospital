@@ -51,7 +51,8 @@ public class RegisterView extends JFrame{
         return registroLink;
     }
 
-    public AbstractUser getTxtConfirmPassword() {
-
+    public JTextField getTxtConfirmPassword() {
+        return textField3;
     }
+
 }
