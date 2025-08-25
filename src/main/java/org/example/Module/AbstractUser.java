@@ -43,4 +43,8 @@ public abstract class AbstractUser  {
         return role;
     }
     public void setRole(String role) {this.role = role;}
+
+    public boolean validatePassword(String inputPassword) {
+        return this.password.equals(inputPassword);
+    }
 }
