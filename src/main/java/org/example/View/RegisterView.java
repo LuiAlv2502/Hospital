@@ -13,6 +13,7 @@ public class RegisterView extends JFrame{
     private JTextField textField3;
     private JPasswordField passwordField2;
     private JButton registrarseButton;
+    private JLabel contraRegistro;
     private JLabel registroLink;
         private JLabel recuperaPassword;
         private JLabel contra;
