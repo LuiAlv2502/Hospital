@@ -5,7 +5,9 @@ import org.example.Module.AbstractUser;
 public class Paciente extends AbstractUser{
     String fechaNacimiento;
     String telefono;
-
+    public Paciente() {
+        super();
+    }
     public Paciente(String name, String password, String id, String fechaNacimiento, String telefono) {
         super(name, password, "Paciente", id);
         this.fechaNacimiento = fechaNacimiento;
