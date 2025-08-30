@@ -40,6 +40,7 @@
         </constraints>
         <properties>
           <background color="-8935213"/>
+          <font name="Yu Gothic" style="1"/>
           <foreground color="-2756865"/>
           <text value="Ingresar"/>
         </properties>
@@ -59,6 +60,7 @@
         </constraints>
         <properties>
           <background color="-15839364"/>
+          <font name="Yu Gothic"/>
           <foreground color="-15839364"/>
           <text value="¿No tiene una cuenta? Registrarse aquí"/>
         </properties>
@@ -69,6 +71,7 @@
         </constraints>
         <properties>
           <background color="-15839364"/>
+          <font name="Yu Gothic"/>
           <foreground color="-15839364"/>
           <text value="Recuperar contraseña"/>
         </properties>
