@@ -20,6 +20,8 @@ public class RegisterView extends JFrame{
     private JLabel recuperaPassword;
     private JLabel contraRegistro;
     private JLabel loginHyperlink;
+    private JLabel fecha;
+    private JLabel confirma;
 
     public RegisterView() {
             setTitle("Register");
