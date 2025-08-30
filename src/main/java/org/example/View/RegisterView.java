@@ -6,21 +6,22 @@ public class RegisterView extends JFrame{
     private JPanel panel;
     private JLabel apellidos;
     private JLabel nombre;
-    private JLabel email;
-    private JTextField nombreTextfield;
+    private JLabel especialidad;
+    private JTextField campoNombre;
     private JButton ingresarButton;
-    private JPasswordField passwordField1;
-    private JTextField idtextField;
-    private JTextField EspecialidadtextField;
-    private JPasswordField passwordField2;
+    private JPasswordField campoContra;
+    private JTextField campoId;
+    private JTextField campoEspecialidad;
+    private JPasswordField campoConfirmaContra;
     private JButton registrarseButton;
     private JLabel registroLink;
     private JComboBox comboBoxRol;
-    private JTextField Fecha;
+    private JTextField campoFecha;
     private JLabel recuperaPassword;
     private JLabel contraRegistro;
+    private JLabel loginHyperlink;
 
-        public RegisterView() {
+    public RegisterView() {
             setTitle("Register");
             setSize(400, 300);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,33 +47,33 @@ public class RegisterView extends JFrame{
         return registroLink;
     }
     public JTextField getNombreTextfield() {
-        return nombreTextfield;
+        return campoNombre;
     }
     public JTextField getIdtextField() {
-        return idtextField;
+        return campoId;
     }
     public JTextField getEspecialidadtextField() {
-        return EspecialidadtextField;
+        return campoEspecialidad;
     }
     public JButton getIngresarButton() {
         return ingresarButton;
     }
     public JPasswordField getPasswordField1() {
-        return passwordField1;
+        return campoContra;
     }
     public JPasswordField getPasswordField2() {
-        return passwordField2;
+        return campoConfirmaContra;
     }
     public String getComboBoxRol() {
         return comboBoxRol.getSelectedItem().toString();
     }
     public JTextField getFecha() {
-        return Fecha;
+        return campoFecha;
     }
 
 
     public JTextField getTxtConfirmPassword() {
-        return EspecialidadtextField;
+        return campoEspecialidad;
     }
 
 }
