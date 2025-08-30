@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<farmaceuticosWrapper>
+    <farmaceutico>
+        <name>gabriela</name>
+        <id>666</id>
+        <password>777</password>
+        <role>Farmaceuta</role>
+    </farmaceutico>
+    <farmaceutico>
+        <name>123</name>
+        <id>123</id>
+        <password>123</password>
+        <role>Farmaceuta</role>
+    </farmaceutico>
+</farmaceuticosWrapper>

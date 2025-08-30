@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pacientesWrapper>
+    <paciente>
+        <name>diego</name>
+        <id>119290953</id>
+        <password>luisdiego</password>
+        <role>Paciente</role>
+        <fechaNacimiento>25/12/2005</fechaNacimiento>
+        <telefono>1111</telefono>
+    </paciente>
+</pacientesWrapper>

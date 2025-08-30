@@ -1,19 +1,19 @@
 package org.example.View;
+
 import javax.swing.*;
 
 public class RegisterView extends JFrame{
-        private JPanel panel;
+    private JPanel panel;
     private JLabel apellidos;
     private JLabel nombre;
     private JLabel email;
-    private JTextField textField1;
-        private JButton ingresarButton;
-        private JPasswordField passwordField1;
-    private JTextField textField2;
-    private JTextField textField3;
+    private JTextField nombreTextfield;
+    private JButton ingresarButton;
+    private JPasswordField passwordField1;
+    private JTextField idtextField;
+    private JTextField EspecialidadtextField;
     private JPasswordField passwordField2;
     private JButton registrarseButton;
-    private JLabel contraRegistro;
     private JLabel registroLink;
         private JLabel recuperaPassword;
         private JLabel contra;
@@ -33,4 +33,44 @@ public class RegisterView extends JFrame{
                 registerView.setVisible(true);
             });
         }
+
+    public AbstractButton getRegistrarseButton() {
+        return registrarseButton;
     }
+
+
+
+    public JComponent getRegistroLink() {
+        return registroLink;
+    }
+    public JTextField getNombreTextfield() {
+        return nombreTextfield;
+    }
+    public JTextField getIdtextField() {
+        return idtextField;
+    }
+    public JTextField getEspecialidadtextField() {
+        return EspecialidadtextField;
+    }
+    public JButton getIngresarButton() {
+        return ingresarButton;
+    }
+    public JPasswordField getPasswordField1() {
+        return passwordField1;
+    }
+    public JPasswordField getPasswordField2() {
+        return passwordField2;
+    }
+    public String getComboBoxRol() {
+        return comboBoxRol.getSelectedItem().toString();
+    }
+    public JTextField getFecha() {
+        return Fecha;
+    }
+
+
+    public JTextField getTxtConfirmPassword() {
+        return EspecialidadtextField;
+    }
+
+}
