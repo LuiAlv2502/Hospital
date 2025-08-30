@@ -15,8 +15,10 @@ public class RegisterView extends JFrame{
     private JPasswordField passwordField2;
     private JButton registrarseButton;
     private JLabel registroLink;
-        private JLabel recuperaPassword;
-        private JLabel contra;
+    private JComboBox comboBoxRol;
+    private JTextField Fecha;
+    private JLabel recuperaPassword;
+    private JLabel contraRegistro;
 
         public RegisterView() {
             setTitle("Register");
