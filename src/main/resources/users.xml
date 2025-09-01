@@ -21,25 +21,4 @@
         <password>777</password>
         <role>Farmaceuta</role>
     </pharmacist>
-    <doctor>
-        <name>maleta</name>
-        <id>1111</id>
-        <password>111</password>
-        <role>Medico</role>
-        <especialidad>Cardiología</especialidad>
-    </doctor>
-    <pharmacist>
-        <name>123</name>
-        <id>123</id>
-        <password>123</password>
-        <role>Farmaceuta</role>
-    </pharmacist>
-    <patient>
-        <name>123</name>
-        <id>1234</id>
-        <password>123</password>
-        <role>Paciente</role>
-        <fechaNacimiento>123</fechaNacimiento>
-        <telefono>1111</telefono>
-    </patient>
 </usersWrapper>
