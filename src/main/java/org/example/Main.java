@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Control.LoginController;
+import org.example.Control.MedicoController;
 import org.example.Module.AbstractUser;
 import org.example.Module.Dao.FarmaceuticoDao;
 import org.example.Module.Dao.MedicoDao;
@@ -27,5 +28,7 @@ public class Main {
 
         // Mostrar la ventana de login
         SwingUtilities.invokeLater(() -> loginView.setVisible(true));
+
+        new MedicoController();
             }
         }
