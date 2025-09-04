@@ -10,4 +10,9 @@ public class Medico extends AbstractUser{
         this.especialidad = especialidad;
     }
     String especialidad;
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
 }
+
