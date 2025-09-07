@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class FarmaceuticoView extends JFrame {
+public class FarmaceuticoView extends JPanel {
     DefaultTableModel model;
 
     private JTextField campoId;
@@ -20,15 +20,10 @@ public class FarmaceuticoView extends JFrame {
 
     private JTable tablaFarmaceuticos;
     private JScrollPane scrollPane;
-    private JPanel jPanelFarmaceutico;
 
     public FarmaceuticoView() {
-        setTitle("Farmacéutico");
-        setSize(900, 400);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        addComponents(getContentPane());
-        setVisible(true);
+        setLayout(new BorderLayout());
+        addComponents();
     }
 
     public void modelAddRow(Object[] objects) {
@@ -41,21 +36,10 @@ public class FarmaceuticoView extends JFrame {
         campoNombre.setText("");
     }
 
-    public JButton getGuardarButton() {
-        return guardarButton;
-    }
-
-    public JButton getBorrarButton() {
-        return borrarButton;
-    }
-
-    public JButton getBuscarButton() {
-        return buscarButton;
-    }
-
-    public JButton getReporteButton() {
-        return reporteButton;
-    }
+    public JButton getGuardarButton() { return guardarButton; }
+    public JButton getBorrarButton() { return borrarButton; }
+    public JButton getBuscarButton() { return buscarButton; }
+    public JButton getReporteButton() { return reporteButton; }
 
     public void addListener(ActionListener al) {
         guardarButton.addActionListener(al);
@@ -64,41 +48,20 @@ public class FarmaceuticoView extends JFrame {
         reporteButton.addActionListener(al);
     }
 
-    public String getCampoId() {
-        return campoId.getText();
-    }
+    public String getCampoId() { return campoId.getText(); }
+    public String getCampoClave() { return campoClave.getText(); }
+    public String getCampoNombre() { return campoNombre.getText(); }
+    public JTextField getCampoBusqNombre() { return campoBusqNombre; }
+    public JTable getTablaFarmaceuticos() { return tablaFarmaceuticos; }
 
-    public String getCampoClave() {
-        return campoClave.getText();
-    }
+    public void setCampoId(String campoId) { this.campoId.setText(campoId); }
+    public void setCampoClave(String campoClave) { this.campoClave.setText(campoClave); }
+    public void setCampoNombre(String campoNombre) { this.campoNombre.setText(campoNombre); }
 
-    public String getCampoNombre() {
-        return campoNombre.getText();
-    }
-
-    public JTextField getCampoBusqNombre() {
-        return campoBusqNombre;
-    }
-
-    public JTable getTablaFarmaceuticos() {
-        return tablaFarmaceuticos;
-    }
-
-    public void setCampoId(String campoId) {
-        this.campoId.setText(campoId);
-    }
-
-    public void setCampoClave(String campoClave) {
-        this.campoClave.setText(campoClave);
-    }
-
-    public void setCampoNombre(String campoNombre) {
-        this.campoNombre.setText(campoNombre);
-    }
-
-    private void addComponents(Container contentPane) {
+    private void addComponents() {
         createUIComponents();
-        jPanelFarmaceutico = new JPanel();
+        JPanel jPanelFarmaceutico = new JPanel();
+        jPanelFarmaceutico.setLayout(null);
 
         // Columnas de la tabla
         Object[] columns = {"ID", "Clave", "Nombre"};
@@ -119,7 +82,6 @@ public class FarmaceuticoView extends JFrame {
         reporteButton = new JButton("Reporte");
 
         // Posiciones
-        setLayout(null);
         campoId.setBounds(20, 20, 150, 30);
         campoClave.setBounds(20, 60, 150, 30);
         campoNombre.setBounds(20, 100, 150, 30);
@@ -131,18 +93,16 @@ public class FarmaceuticoView extends JFrame {
 
         scrollPane.setBounds(20, 180, 850, 150);
 
-        jPanelFarmaceutico.setLayout(null);
         jPanelFarmaceutico.add(scrollPane);
         jPanelFarmaceutico.add(campoId);
         jPanelFarmaceutico.add(campoClave);
         jPanelFarmaceutico.add(campoNombre);
-
         jPanelFarmaceutico.add(guardarButton);
         jPanelFarmaceutico.add(borrarButton);
         jPanelFarmaceutico.add(buscarButton);
         jPanelFarmaceutico.add(reporteButton);
 
-        contentPane.add(jPanelFarmaceutico);
+        add(jPanelFarmaceutico, BorderLayout.CENTER);
     }
 
     private void createUIComponents() {
