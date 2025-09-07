@@ -73,12 +73,12 @@ public class MedicoView extends JFrame {
     public void setCampoEspecialidad(String campoEspecialidad){this.campoEspecialidad.setText(campoEspecialidad);}
 
     private void addComponents(Container contentPane){
+        createUIComponents();
         jPanelMedico = new JPanel();
 
         Object[] columns = {"ID","Nombre","Especialidad"};
         model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
-        createUIComponents();
         tablaDoctores.setModel(model);
 
         campoId = new JTextField();
