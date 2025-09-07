@@ -1,6 +1,5 @@
 package org.example.View;
-import org.example.View.MedicoPanel;
-import org.example.View.FarmaceuticoPanel;
+
 import javax.swing.*;
 
 public class AdminPanel extends JFrame {

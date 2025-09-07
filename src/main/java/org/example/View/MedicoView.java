@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MedicoView extends JFrame {
+public class MedicoView extends JPanel {
     DefaultTableModel model;
 
     private JTextField campoId;
@@ -18,16 +18,10 @@ public class MedicoView extends JFrame {
     private JTextField campoBusqNombre;
     private JTable tablaDoctores;
     private JScrollPane scrollPane;
-    private JPanel jPanel;
-    private JPanel jPanelMedico;
 
     public MedicoView() {
-    setTitle("Medico");
-    setSize(900,400);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    addComponents(getContentPane());
-    setVisible(true);
+        setLayout(new BorderLayout()); // para organizar
+        addComponents();
     }
 
     public void modelAddRow(Object[] objects){
@@ -40,41 +34,31 @@ public class MedicoView extends JFrame {
         campoEspecialidad.setText("");
     }
 
-    public JButton getGuardarButton() {
-        return guardarButton;
-    }
-
-    public JButton getBorrarButton() {
-        return borrarButton;
-    }
-
-    public JButton getBuscarButton() {
-        return buscarButton;
-    }
-
-    public JButton getReporteButton() {
-        return reporteButton;
-    }
+    public JButton getGuardarButton() { return guardarButton; }
+    public JButton getBorrarButton() { return borrarButton; }
+    public JButton getBuscarButton() { return buscarButton; }
+    public JButton getReporteButton() { return reporteButton; }
 
     public void addListener(ActionListener al){
-            guardarButton.addActionListener(al);
-            borrarButton.addActionListener(al);
-            buscarButton.addActionListener(al);
-            reporteButton.addActionListener(al);
+        guardarButton.addActionListener(al);
+        borrarButton.addActionListener(al);
+        buscarButton.addActionListener(al);
+        reporteButton.addActionListener(al);
     }
 
-    public String getCampoId() {return campoId.getText();}
-    public String getCampoNombre() {return campoNombre.getText();}
-    public String getCampoEspecialidad() {return campoEspecialidad.getText();}
-    public JTextField getCampoBusqNombre() {return campoBusqNombre;}
-    public JTable getTablaDoctores() {return tablaDoctores;}
-    public void setCampoId(String campoId) {this.campoId.setText(campoId);}
-    public void setCampoNombre(String campoNombre){this.campoNombre.setText(campoNombre);}
-    public void setCampoEspecialidad(String campoEspecialidad){this.campoEspecialidad.setText(campoEspecialidad);}
+    public String getCampoId() { return campoId.getText(); }
+    public String getCampoNombre() { return campoNombre.getText(); }
+    public String getCampoEspecialidad() { return campoEspecialidad.getText(); }
+    public JTextField getCampoBusqNombre() { return campoBusqNombre; }
+    public JTable getTablaDoctores() { return tablaDoctores; }
+    public void setCampoId(String campoId) { this.campoId.setText(campoId); }
+    public void setCampoNombre(String campoNombre){ this.campoNombre.setText(campoNombre); }
+    public void setCampoEspecialidad(String campoEspecialidad){ this.campoEspecialidad.setText(campoEspecialidad); }
 
-    private void addComponents(Container contentPane){
+    private void addComponents(){
         createUIComponents();
-        jPanelMedico = new JPanel();
+        JPanel jPanelMedico = new JPanel();
+        jPanelMedico.setLayout(null);
 
         Object[] columns = {"ID","Nombre","Especialidad"};
         model = new DefaultTableModel();
@@ -90,7 +74,6 @@ public class MedicoView extends JFrame {
         buscarButton = new JButton("Buscar");
         reporteButton = new JButton("Reporte");
 
-        setLayout(null);
         campoId.setBounds(20, 20, 100, 30);
         campoNombre.setBounds(20, 60, 150, 30);
         campoEspecialidad.setBounds(20, 100, 150, 30);
@@ -102,22 +85,19 @@ public class MedicoView extends JFrame {
 
         scrollPane.setBounds(20, 180, 850, 150);
 
-        jPanelMedico.setLayout(null);
         jPanelMedico.add(scrollPane);
         jPanelMedico.add(campoId);
         jPanelMedico.add(campoNombre);
         jPanelMedico.add(campoEspecialidad);
-
         jPanelMedico.add(guardarButton);
         jPanelMedico.add(borrarButton);
         jPanelMedico.add(buscarButton);
         jPanelMedico.add(reporteButton);
 
-        contentPane.add(jPanelMedico);
+        add(jPanelMedico, BorderLayout.CENTER);
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         tablaDoctores = new JTable();
         tablaDoctores.setRowHeight(30);
         scrollPane = new JScrollPane(tablaDoctores);
@@ -132,6 +112,6 @@ public class MedicoView extends JFrame {
     }
 
     public void mostrarError(String msj) {
-        JOptionPane.showMessageDialog(this,msj, "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, msj, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
