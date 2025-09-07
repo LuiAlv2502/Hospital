@@ -24,7 +24,7 @@ public class Main {
         LoginView loginView = new LoginView();
 
         // Crear el controlador de login
-        new LoginController(loginView, usersDao);
+        LoginController loginController = new LoginController(loginView, usersDao);
 
         // Mostrar la ventana de login
         SwingUtilities.invokeLater(() -> loginView.setVisible(true));
