@@ -19,6 +19,14 @@ public class MedicoController{
         cargarMedicos();
         view.addListener(new ButtonListener());
     }
+    public MedicoController(MedicoView view, MedicoDao dao){
+        this.view = view;
+        this.dao = dao;
+
+        cargarMedicos();
+        view.addListener(new ButtonListener());
+    }
+
 
     private void cargarMedicos() {
         MedicosWrapper wrapper = dao.loadMedicos();

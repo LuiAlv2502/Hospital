@@ -3,7 +3,8 @@ package org.example.View;
 import javax.swing.*;
 
 public class AdminPanel extends JFrame {
-
+    MedicoView medicoView;
+    FarmaceuticoView farmaceuticoView;
     public AdminPanel() {
         setTitle("Administración Hospitalaria");
         setSize(900, 600);
@@ -14,18 +15,22 @@ public class AdminPanel extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
 
         // Agregamos las pestañas
-        MedicoPanel medicoPanel = new MedicoPanel();
-        FarmaceuticoPanel farmaceuticoPanel = new FarmaceuticoPanel();
+        medicoView = new MedicoView();
+        farmaceuticoView = new FarmaceuticoView();
 
 
-        tabbedPane.addTab("Farmacéuticos", new FarmaceuticoPanel());
-        tabbedPane.addTab("Médicos", medicoPanel);
+        tabbedPane.addTab("Farmacéuticos", farmaceuticoView);
+        tabbedPane.addTab("Médicos", medicoView);
 
         add(tabbedPane);
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new AdminPanel();
+    public FarmaceuticoView getFarmaceuticoPanel() {
+        return this.farmaceuticoView;
+    }
+
+    public MedicoView getMedicoPanel() {
+        return this.medicoView;
     }
 }
