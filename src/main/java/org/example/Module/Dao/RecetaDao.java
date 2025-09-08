@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class RecetaDao {
 
-    private static final String FILE_PATH = "src/main/resources/recetas.xml";
+    private static final String FILE_PATH = "src/main/resources/receta.xml";
 
     public RecetasWrapper loadRecetas() {
         try {

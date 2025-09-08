@@ -77,4 +77,10 @@ public class MedicamentoDao {
                         m.getNombre().toLowerCase().contains(q))
                 .collect(Collectors.toList());
     }
+    public Medicamento searchMedicamentoByCodigo(String codigo) {
+        return loadMedicamentos().getMedicamentos().stream()
+                .filter(m -> m.getCodigo().equals(codigo))
+                .findFirst()
+                .orElse(null);
+    }
 }

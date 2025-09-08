@@ -4,6 +4,8 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.example.Module.wrappers.LocalDateAdapter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,10 +23,10 @@ public class Receta {
     @XmlElement
     private Paciente paciente;
 
-    @XmlElement
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fechaConfeccion;
 
-    @XmlElement
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fechaRetiro;
 
     @XmlElement
@@ -37,7 +39,7 @@ public class Receta {
     public Receta() {
     }
 
-    public Receta(Medico medico, Paciente paciente) {
+    public Receta(Paciente paciente) {
         this.medico = medico;
         this.paciente = paciente;
         this.fechaConfeccion = LocalDate.now();
@@ -73,7 +75,7 @@ public class Receta {
         medicamentos.add(detalle);
     }
 
-    public void eliminarMedicamento(DetalleMedicamento detalle) {
+    public void eliminarMedicamento(String detalle) {
         medicamentos.remove(detalle);
     }
 

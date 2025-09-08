@@ -3,9 +3,7 @@ package org.example.Control;
 import org.example.Module.*;
 import org.example.Module.Dao.*;
 import org.example.Module.wrappers.UsersWrapper;
-import org.example.View.AdminPanel;
-import org.example.View.LoginView;
-import org.example.View.RegisterView;
+import org.example.View.*;
 
 import javax.swing.*;
 
@@ -56,6 +54,7 @@ public class LoginController {
         PacienteDao pacienteDao = new PacienteDao();
         MedicoDao medicoDao = new MedicoDao();
         FarmaceuticoDao farmaceuticoDao = new FarmaceuticoDao();
+        MedicamentoDao medicamentoDao = new MedicamentoDao();
 
         try {
             // Cargar todos los usuarios desde UsersDao
@@ -81,6 +80,10 @@ public class LoginController {
                         break;
                     case "medico":
                         System.out.println("Abrir vista de médico");
+                        MedicoPanel medicoPanel = new MedicoPanel();
+                        org.example.Module.Service.PrescripcionService prescripcionController = new org.example.Module.Service.PrescripcionService(pacienteDao, medicoDao, new RecetaDao(), medicamentoDao);
+                        panelMedicoController panelMedicoController = new panelMedicoController(medicoPanel.getPrescribir(), prescripcionController);
+                        medicoPanel.setVisible(true);
                         break;
                     case "paciente":
                         System.out.println("Abrir vista de paciente");

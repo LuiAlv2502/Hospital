@@ -51,7 +51,7 @@ public class MedicoController{
                 }
 
                 // Crear y guardar médico en XML
-                Medico medico = new Medico(nombre, "", id, especialidad);
+                Medico medico = new Medico(nombre, id, id, especialidad);
                 dao.addMedico(medico);
 
                 // Mostrar en tabla
