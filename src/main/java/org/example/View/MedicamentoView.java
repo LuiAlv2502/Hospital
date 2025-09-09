@@ -26,7 +26,6 @@ public class MedicamentoView extends JPanel {
         addComponents();
     }
 
-    // === Métodos auxiliares ===
     public void modelAddRow(Object[] objects){
         model.addRow(objects);
     }
@@ -41,13 +40,11 @@ public class MedicamentoView extends JPanel {
         model.setRowCount(0);
     }
 
-    // === Getters de botones ===
     public JButton getGuardarButton() { return guardarButton; }
     public JButton getBorrarButton() { return borrarButton; }
     public JButton getBuscarButton() { return buscarButton; }
     public JButton getModificarButton() { return modificarButton; }
 
-    // === Getters de campos ===
     public String getCampoCodigo() { return campoCodigo.getText(); }
     public String getCampoNombre() { return campoNombre.getText(); }
     public String getCampoPresentacion() { return campoPresentacion.getText(); }
@@ -59,7 +56,6 @@ public class MedicamentoView extends JPanel {
     public void setCampoNombre(String nombre) { campoNombre.setText(nombre); }
     public void setCampoPresentacion(String presentacion) { campoPresentacion.setText(presentacion); }
 
-    // === Listeners ===
     public void addListener(ActionListener al){
         guardarButton.addActionListener(al);
         borrarButton.addActionListener(al);
@@ -67,7 +63,6 @@ public class MedicamentoView extends JPanel {
         modificarButton.addActionListener(al);
     }
 
-    // === Componentes gráficos ===
     private void addComponents(){
         createUIComponents();
         JPanel panel = new JPanel();

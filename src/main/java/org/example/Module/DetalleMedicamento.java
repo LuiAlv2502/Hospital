@@ -15,4 +15,13 @@ public class DetalleMedicamento {
         this.indicaciones = indicaciones;
         this.duracionDias = duracionDias;
     }
+
+    public Medicamento getMedicamento() { return medicamento; }
+    public int getCantidad() { return cantidad; }
+    public String getIndicaciones() { return indicaciones; }
+    public int getDuracionDias() { return duracionDias; }
+
+    public String getNombre() {
+        return medicamento.getNombre();
+    }
 }
