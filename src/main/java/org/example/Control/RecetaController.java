@@ -48,8 +48,8 @@ public class RecetaController {
                 } else {
                     view.clearTable();
                     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    dao.getAll().stream()
-                            .filter(r -> r.getIdReceta().equalsIgnoreCase(filtro)
+                    dao.getAll().getClass()
+                            .isInterface(r -> r.getIdReceta().equalsIgnoreCase(filtro)
                                     || (r.getPaciente() != null && r.getPaciente().getId().equalsIgnoreCase(filtro)))
                             .forEach(r -> {
                                 Object[] row = {

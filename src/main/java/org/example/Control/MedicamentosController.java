@@ -1,7 +1,7 @@
 package org.example.Control;
 
 import org.example.Module.Medicamento;
-import org.example.Module.Dao.MedicamentosDao;
+import org.example.Module.Dao.MedicamentoDao;
 import org.example.View.MedicamentoView;
 
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.util.List;
 
 public class MedicamentosController {
     private MedicamentoView view;
-    private MedicamentosDao dao;
+    private MedicamentoDao dao;
 
     public MedicamentosController() {
         this.view = new MedicamentoView();
-        this.dao = new MedicamentosDao();
+        this.dao = new MedicamentoDao();
 
         cargarMedicamentos();
         view.addListener(new ButtonListener());
@@ -26,7 +26,7 @@ public class MedicamentosController {
 
     // === Cargar medicamentos en la tabla ===
     private void cargarMedicamentos() {
-        List<Medicamento> medicamentos = dao.getAll();
+        List<Medicamento> medicamentos = dao.loadMedicamentos().getMedicamentos();
         for (Medicamento m : medicamentos) {
             Object[] row = { m.getCodigo(), m.getNombre(), m.getPresentacion() };
             view.modelAddRow(row);
@@ -51,7 +51,7 @@ public class MedicamentosController {
 
                 // Crear y guardar medicamento
                 Medicamento medicamento = new Medicamento(codigo, nombre, presentacion);
-                dao.add(medicamento);
+                dao.addMedicamento(medicamento);
 
                 // Agregar a la tabla
                 Object[] row = { codigo, nombre, presentacion };
@@ -65,7 +65,7 @@ public class MedicamentosController {
                 if (i >= 0) {
                     String codigo = (String) view.getTablaMedicamentos().getValueAt(i, 0);
 
-                    boolean removed = dao.eliminarPorCodigo(codigo);
+                    boolean removed = dao.removeMedicamentoByCodigo(codigo);
                     if (removed) {
                         view.tableRemoveRow(i);
                     } else {
@@ -85,13 +85,13 @@ public class MedicamentosController {
                     cargarMedicamentos();
                 } else {
                     // Primero intentar buscar por código
-                    dao.buscarPorCodigo(busqueda).ifPresent(m -> {
+                    dao.findByCodigo(busqueda).ifPresent(m -> {
                         Object[] row = { m.getCodigo(), m.getNombre(), m.getPresentacion() };
                         view.modelAddRow(row);
                     });
 
                     // Buscar por nombre
-                    List<Medicamento> encontrados = dao.buscarPorNombre(busqueda);
+                    List<Medicamento> encontrados = dao.search(busqueda);
                     for (Medicamento m : encontrados) {
                         Object[] row = { m.getCodigo(), m.getNombre(), m.getPresentacion() };
                         view.modelAddRow(row);

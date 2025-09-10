@@ -88,4 +88,9 @@ public class RecetaDao {
                 .filter(r -> r.getPaciente() != null && r.getPaciente().getId().equals(pacienteId))
                 .collect(Collectors.toList());
     }
+
+    public Receta[] getAll() {
+        List<Receta> list = loadRecetas().getRecetas();
+        return list.toArray(new Receta[0]);
+    }
 }

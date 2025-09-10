@@ -9,6 +9,12 @@ public class Medicamento {
     private String nombre;
     private String presentacion;
 
+    public Medicamento(String codigo, String nombre, String presentacion) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.presentacion = presentacion;
+    }
+
     @XmlElement public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
 
