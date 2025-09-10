@@ -66,14 +66,14 @@ public class RecetaDao {
         }
     }
 
-    // === Consultas ===
+
     public Optional<Receta> findById(String id) {
         return loadRecetas().getRecetas().stream()
                 .filter(r -> r.getIdReceta().equalsIgnoreCase(id))
                 .findFirst();
     }
 
-    public List<Receta> findAll() {
+    public List<Receta> getAll() {
         return loadRecetas().getRecetas();
     }
 

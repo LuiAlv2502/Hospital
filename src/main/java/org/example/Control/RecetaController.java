@@ -68,7 +68,7 @@ public class RecetaController {
                 int i = view.tableGetSelectedRow();
                 if (i >= 0) {
                     String id = (String) view.getTablaRecetas().getValueAt(i, 0);
-                    dao.buscarPorId(id).ifPresentOrElse(r -> {
+                    dao.findById(id).ifPresentOrElse(r -> {
                         StringBuilder sb = new StringBuilder();
                         sb.append("ID: ").append(r.getIdReceta()).append("\n");
                         sb.append("Paciente: ").append(r.getPaciente() != null ? r.getPaciente().getName() : "N/A").append("\n");

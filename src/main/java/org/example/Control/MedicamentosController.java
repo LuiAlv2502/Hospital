@@ -1,7 +1,7 @@
 package org.example.Control;
 
 import org.example.Module.Medicamento;
-import org.example.Module.Dao.MedicamentosDao;
+import org.example.Module.Dao.MedicamentoDao;
 import org.example.View.MedicamentoView;
 
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import java.util.List;
 
 public class MedicamentosController {
     private MedicamentoView view;
-    private MedicamentosDao dao;
+    private MedicamentoDao dao;
 
     public MedicamentosController() {
         this.view = new MedicamentoView();
-        this.dao = new MedicamentosDao();
+        this.dao = new MedicamentoDao();
 
         cargarMedicamentos();
         view.addListener(new ButtonListener());
