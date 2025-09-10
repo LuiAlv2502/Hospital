@@ -21,6 +21,9 @@ public class DetalleMedicamento {
     @XmlElement
     private int duracionDias;
 
+    // Este campo NO lo anotamos con @XmlElement porque probablemente no quieras serializar todo el Medicamento
+    private Medicamento medicamento;
+
     // Constructor vacío requerido por JAXB
     public DetalleMedicamento() {
     }
@@ -63,5 +66,18 @@ public class DetalleMedicamento {
 
     public void setDuracionDias(int duracionDias) {
         this.duracionDias = duracionDias;
+    }
+
+    public Medicamento getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(Medicamento medicamento) {
+        this.medicamento = medicamento;
+    }
+
+    // Método de conveniencia para obtener nombre del medicamento
+    public String getNombre() {
+        return medicamento != null ? medicamento.getNombre() : null;
     }
 }

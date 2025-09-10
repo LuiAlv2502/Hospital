@@ -9,28 +9,27 @@ import org.example.Module.wrappers.RecetasWrapper;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class RecetaDao {
 
-    private static final String FILE_PATH = "src/main/resources/receta.xml";
+    private static final String FILE_PATH = "src/main/resources/recetas.xml";
 
-    public RecetasWrapper loadRecetas() {
+    private RecetasWrapper loadRecetas() {
         try {
             JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class, Receta.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             File file = new File(FILE_PATH);
             if (file.exists()) {
                 return (RecetasWrapper) unmarshaller.unmarshal(file);
-            } else {
-                return new RecetasWrapper();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return new RecetasWrapper();
         }
+        return new RecetasWrapper();
     }
 
-    public void saveRecetas(RecetasWrapper wrapper) {
+    private void saveRecetas(RecetasWrapper wrapper) {
         try {
             JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class, Receta.class);
             Marshaller marshaller = context.createMarshaller();
@@ -41,11 +40,11 @@ public class RecetaDao {
         }
     }
 
+    // === CRUD escritura ===
     public Receta saveNew(Receta receta) {
         RecetasWrapper wrapper = loadRecetas();
         List<Receta> list = wrapper.getRecetas();
 
-        // Generar un ID simple si no tiene
         if (receta.getIdReceta() == null || receta.getIdReceta().isEmpty()) {
             receta.setIdReceta("R-" + System.currentTimeMillis());
         }
@@ -67,13 +66,26 @@ public class RecetaDao {
         }
     }
 
+    // === Consultas ===
     public Optional<Receta> findById(String id) {
         return loadRecetas().getRecetas().stream()
-                .filter(r -> r.getIdReceta().equals(id))
+                .filter(r -> r.getIdReceta().equalsIgnoreCase(id))
                 .findFirst();
     }
 
     public List<Receta> findAll() {
         return loadRecetas().getRecetas();
+    }
+
+    public List<Receta> findByEstado(String estado) {
+        return loadRecetas().getRecetas().stream()
+                .filter(r -> r.getEstado().equalsIgnoreCase(estado))
+                .collect(Collectors.toList());
+    }
+
+    public List<Receta> findByPaciente(String pacienteId) {
+        return loadRecetas().getRecetas().stream()
+                .filter(r -> r.getPaciente() != null && r.getPaciente().getId().equals(pacienteId))
+                .collect(Collectors.toList());
     }
 }

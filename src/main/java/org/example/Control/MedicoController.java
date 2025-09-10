@@ -39,7 +39,7 @@ public class MedicoController{
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // GUARDAR MÉDICO
+            // guardar medico
             if (e.getSource().equals(view.getGuardarButton())) {
                 String id = view.getCampoId();
                 String nombre = view.getCampoNombre();
@@ -60,7 +60,7 @@ public class MedicoController{
                 view.clearAllText();
             }
 
-            // BORRAR MÉDICO
+            // borrar medico
             else if (e.getSource().equals(view.getBorrarButton())) {
                 int i = view.tableGetSelectedRow();
                 if (i >= 0) {
