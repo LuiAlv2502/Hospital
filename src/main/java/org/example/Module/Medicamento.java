@@ -15,19 +15,12 @@ public class Medicamento {
         this.presentacion = presentacion;
     }
 
-
-    // ===== Getters y Setters =====
-    @XmlElement
-    public String getCodigo() { return codigo; }
     @XmlElement public String getCodigo() { return codigo; }
-
     public void setCodigo(String codigo) { this.codigo = codigo; }
 
-    @XmlElement
-    public String getNombre() { return nombre; }
+    @XmlElement public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    @XmlElement
-    public String getPresentacion() { return presentacion; }
+    @XmlElement public String getPresentacion() { return presentacion; }
     public void setPresentacion(String presentacion) { this.presentacion = presentacion; }
 }

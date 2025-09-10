@@ -15,7 +15,7 @@ public class MedicamentoDao {
 
     private static final String FILE_PATH = "src/main/resources/medicamentos.xml";
 
-    private MedicamentosWrapper loadMedicamentos() {
+    public MedicamentosWrapper loadMedicamentos() {
         try {
             JAXBContext context = JAXBContext.newInstance(MedicamentosWrapper.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -31,7 +31,7 @@ public class MedicamentoDao {
         }
     }
 
-    private void saveMedicamentos(MedicamentosWrapper wrapper) {
+    public void saveMedicamentos(MedicamentosWrapper wrapper) {
         try {
             JAXBContext context = JAXBContext.newInstance(MedicamentosWrapper.class);
             Marshaller marshaller = context.createMarshaller();
@@ -42,17 +42,11 @@ public class MedicamentoDao {
         }
     }
 
-    // === Métodos que el Controller espera ===
-
-    public List<Medicamento> getAll() {
-        return loadMedicamentos().getMedicamentos();
-    }
-
-    public void add(Medicamento medicamento) {
+    public void addMedicamento(Medicamento medicamento) {
         MedicamentosWrapper wrapper = loadMedicamentos();
         List<Medicamento> list = wrapper.getMedicamentos();
 
-        boolean exists = list.stream().anyMatch(m -> m.getCodigo().equalsIgnoreCase(medicamento.getCodigo()));
+        boolean exists = list.stream().anyMatch(m -> m.getCodigo().equals(medicamento.getCodigo()));
         if (!exists) {
             list.add(medicamento);
             saveMedicamentos(wrapper);
@@ -62,25 +56,31 @@ public class MedicamentoDao {
         }
     }
 
-    public boolean eliminarPorCodigo(String codigo) {
+    public boolean removeMedicamentoByCodigo(String codigo) {
         MedicamentosWrapper wrapper = loadMedicamentos();
-        boolean removed = wrapper.getMedicamentos().removeIf(m -> m.getCodigo().equalsIgnoreCase(codigo));
-        if (removed) {
-            saveMedicamentos(wrapper);
-        }
+        boolean removed = wrapper.getMedicamentos().removeIf(m -> m.getCodigo().equals(codigo));
+        if (removed) saveMedicamentos(wrapper);
         return removed;
     }
 
-    public Optional<Medicamento> buscarPorCodigo(String codigo) {
+    public Optional<Medicamento> findByCodigo(String codigo) {
         return loadMedicamentos().getMedicamentos().stream()
-                .filter(m -> m.getCodigo().equalsIgnoreCase(codigo))
+                .filter(m -> m.getCodigo().equals(codigo))
                 .findFirst();
     }
 
-    public List<Medicamento> buscarPorNombre(String nombre) {
-        String q = nombre.toLowerCase();
+    // Búsqueda aproximada por código o nombre
+    public List<Medicamento> search(String query) {
+        String q = query.toLowerCase();
         return loadMedicamentos().getMedicamentos().stream()
-                .filter(m -> m.getNombre().toLowerCase().contains(q))
+                .filter(m -> m.getCodigo().toLowerCase().contains(q) ||
+                        m.getNombre().toLowerCase().contains(q))
                 .collect(Collectors.toList());
+    }
+    public Medicamento searchMedicamentoByCodigo(String codigo) {
+        return loadMedicamentos().getMedicamentos().stream()
+                .filter(m -> m.getCodigo().equals(codigo))
+                .findFirst()
+                .orElse(null);
     }
 }
