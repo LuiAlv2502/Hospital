@@ -81,7 +81,7 @@ public class LoginController {
                     case "medico":
                         System.out.println("Abrir vista de médico");
                         MedicoPanel medicoPanel = new MedicoPanel();
-                        org.example.Module.Service.PrescripcionService prescripcionController = new org.example.Module.Service.PrescripcionService(pacienteDao, medicoDao, new RecetaDao(), medicamentoDao);
+                        org.example.Module.Servicio.PrescripcionService prescripcionController = new org.example.Module.Servicio.PrescripcionService(pacienteDao, medicoDao, new RecetaDao(), medicamentoDao);
                         panelMedicoController panelMedicoController = new panelMedicoController(medicoPanel.getPrescribir(), prescripcionController);
                         medicoPanel.setVisible(true);
                         break;

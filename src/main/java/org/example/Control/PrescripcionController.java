@@ -1,7 +1,7 @@
 package org.example.Control;
 
 import org.example.Module.Receta;
-import org.example.Module.Service.PrescripcionService;
+import org.example.Module.Servicio.PrescripcionService;
 import org.example.View.prescribir;
 
 import java.time.LocalDate;

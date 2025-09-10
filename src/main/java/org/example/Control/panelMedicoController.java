@@ -1,7 +1,7 @@
 package org.example.Control;
 
 import org.example.View.prescribir;
-import org.example.Module.Service.PrescripcionService;
+import org.example.Module.Servicio.PrescripcionService;
 import org.example.Control.PrescripcionController;
 
 public class panelMedicoController {
