@@ -1,1 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<medicamentos>
+    <medicamento>
+        <codigo>M001</codigo>
+        <nombre>Acetaminofén</nombre>
+        <presentacion>500mg</presentacion>
+    </medicamento>
+    <medicamento>
+        <codigo>M002</codigo>
+        <nombre>Ibuprofeno</nombre>
+        <presentacion>400mg</presentacion>
+    </medicamento>
+</medicamentos>

@@ -45,9 +45,18 @@ public class PrescripcionService {
                 new IllegalArgumentException("Receta no encontrada")
         );
 
-        DetalleMedicamento detalle = new DetalleMedicamento(codigoMedicamento, cantidad, indicaciones, duracionDias);
-        receta.agregarMedicamento(detalle);
+        var medicamento = medicamentoDao.findByCodigo(codigoMedicamento)
+                .orElseThrow(() -> new IllegalArgumentException("Medicamento no encontrado con código: " + codigoMedicamento));
 
+        // Asocia el medicamento real al detalle
+        DetalleMedicamento detalle = new DetalleMedicamento(
+                medicamento.getCodigo(),
+                cantidad,
+                indicaciones,
+                duracionDias
+        );
+
+        receta.agregarMedicamento(detalle);
         recetaDao.update(receta);
     }
 
