@@ -5,9 +5,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+
 public class MedicoView extends JPanel {
     DefaultTableModel model;
-
+    private JPanel JPanel;
     private JTextField campoId;
     private JTextField campoNombre;
     private JTextField campoEspecialidad;

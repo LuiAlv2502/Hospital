@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <medicosWrapper>
     <medico>
-        <name>juan</name>
-        <id>2525</id>
-        <password>juan123</password>
-        <role>Medico</role>
-        <especialidad>General</especialidad>
-    </medico>
-    <medico>
         <name>maleta</name>
         <id>1111</id>
         <password>111</password>
         <role>Medico</role>
         <especialidad>Cardiología</especialidad>
+    </medico>
+    <medico>
+        <name>juan</name>
+        <id>juan</id>
+        <password>juan</password>
+        <role>Medico</role>
+        <especialidad>juan</especialidad>
+    </medico>
+    <medico>
+        <name>555</name>
+        <id>555</id>
+        <password>555</password>
+        <role>Medico</role>
+        <especialidad>555</especialidad>
     </medico>
 </medicosWrapper>

@@ -1,22 +1,17 @@
 package org.example.Module.wrappers;
 
-import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import org.example.Module.Medicamento;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "medicamentosWrapper")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "medicamentos")
 public class MedicamentosWrapper {
-
-    @XmlElement(name = "medicamento")
     private List<Medicamento> medicamentos = new ArrayList<>();
 
-    public MedicamentosWrapper() {
-        this.medicamentos = new ArrayList<>();
-    }
-
+    @XmlElement(name = "medicamento")
     public List<Medicamento> getMedicamentos() {
         return medicamentos;
     }
