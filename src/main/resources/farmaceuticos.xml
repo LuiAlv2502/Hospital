@@ -12,4 +12,10 @@
         <password>123</password>
         <role>Farmaceuta</role>
     </farmaceutico>
+    <farmaceutico>
+        <name>123</name>
+        <id>1234</id>
+        <password>123</password>
+        <role>Farmaceuta</role>
+    </farmaceutico>
 </farmaceuticosWrapper>

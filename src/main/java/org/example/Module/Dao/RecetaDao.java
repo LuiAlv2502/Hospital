@@ -1,6 +1,8 @@
 package org.example.Module.Dao;
 
-import jakarta.xml.bind.*;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 import org.example.Module.Receta;
 import org.example.Module.wrappers.RecetasWrapper;
 
@@ -13,32 +15,23 @@ public class RecetaDao {
 
     private static final String FILE_PATH = "src/main/resources/recetas.xml";
 
-    private RecetasWrapper wrapper;
-
-    public RecetaDao() {
-        cargar();
-    }
-
-    private void cargar() {
+    private RecetasWrapper loadRecetas() {
         try {
-            File file = new File(FILE_PATH);
-            if (!file.exists()) {
-                wrapper = new RecetasWrapper();
-                guardar();
-                return;
-            }
-            JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class);
+            JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class, Receta.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            wrapper = (RecetasWrapper) unmarshaller.unmarshal(file);
+            File file = new File(FILE_PATH);
+            if (file.exists()) {
+                return (RecetasWrapper) unmarshaller.unmarshal(file);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            wrapper = new RecetasWrapper();
         }
+        return new RecetasWrapper();
     }
 
-    private void guardar() {
+    private void saveRecetas(RecetasWrapper wrapper) {
         try {
-            JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class);
+            JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class, Receta.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(wrapper, new File(FILE_PATH));
@@ -47,25 +40,51 @@ public class RecetaDao {
         }
     }
 
-    // === CRUD de solo lectura ===
-    public List<Receta> getAll() {
-        return wrapper.getRecetas();
+    // === CRUD escritura ===
+    public Receta saveNew(Receta receta) {
+        RecetasWrapper wrapper = loadRecetas();
+        List<Receta> list = wrapper.getRecetas();
+
+        if (receta.getIdReceta() == null || receta.getIdReceta().isEmpty()) {
+            receta.setIdReceta("R-" + System.currentTimeMillis());
+        }
+
+        list.add(receta);
+        saveRecetas(wrapper);
+        return receta;
     }
 
-    public Optional<Receta> buscarPorId(String id) {
-        return wrapper.getRecetas().stream()
+    public void update(Receta receta) {
+        RecetasWrapper wrapper = loadRecetas();
+        List<Receta> list = wrapper.getRecetas();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getIdReceta().equals(receta.getIdReceta())) {
+                list.set(i, receta);
+                saveRecetas(wrapper);
+                return;
+            }
+        }
+    }
+
+    // === Consultas ===
+    public Optional<Receta> findById(String id) {
+        return loadRecetas().getRecetas().stream()
                 .filter(r -> r.getIdReceta().equalsIgnoreCase(id))
                 .findFirst();
     }
 
-    public List<Receta> buscarPorEstado(String estado) {
-        return wrapper.getRecetas().stream()
+    public List<Receta> findAll() {
+        return loadRecetas().getRecetas();
+    }
+
+    public List<Receta> findByEstado(String estado) {
+        return loadRecetas().getRecetas().stream()
                 .filter(r -> r.getEstado().equalsIgnoreCase(estado))
                 .collect(Collectors.toList());
     }
 
-    public List<Receta> buscarPorPaciente(String pacienteId) {
-        return wrapper.getRecetas().stream()
+    public List<Receta> findByPaciente(String pacienteId) {
+        return loadRecetas().getRecetas().stream()
                 .filter(r -> r.getPaciente() != null && r.getPaciente().getId().equals(pacienteId))
                 .collect(Collectors.toList());
     }

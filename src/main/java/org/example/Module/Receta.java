@@ -1,21 +1,45 @@
 package org.example.Module;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.example.Module.wrappers.LocalDateAdapter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+@XmlRootElement(name = "receta")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Receta {
-    private String idReceta;
-    private Medico medico;
-    private Paciente paciente;
-    private LocalDate fechaConfeccion;
-    private LocalDate fechaRetiro;
-    private String estado; // confeccionada, entregada, etc.
 
+    @XmlElement
+    private String idReceta;
+
+    @XmlElement
+    private Medico medico;
+
+    @XmlElement
+    private Paciente paciente;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate fechaConfeccion;
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate fechaRetiro;
+
+    @XmlElement
+    private String estado; // "en_proceso", "confeccionada", "entregada", etc.
+
+    @XmlElement(name = "detalleMedicamento")
     private List<DetalleMedicamento> medicamentos = new ArrayList<>();
 
+    // ===== Constructores =====
     public Receta() {
-        // Constructor vacío para JAXB
+        // Requerido por JAXB
     }
 
     public Receta(String idReceta, Medico medico, Paciente paciente) {
@@ -26,21 +50,11 @@ public class Receta {
         this.estado = "en_proceso";
     }
 
-    public void agregarMedicamento(DetalleMedicamento detalle) {
-        medicamentos.add(detalle);
-    }
-
-    public void eliminarMedicamento(DetalleMedicamento detalle) {
-        medicamentos.remove(detalle);
-    }
-
-    public void registrar() {
-        this.estado = "confeccionada";
-        this.fechaRetiro = LocalDate.now(); // o lógica para sumarle días
+    public Receta(Paciente paciente) {
+        this(null, null, paciente);
     }
 
     // ===== Getters y Setters =====
-
     public String getIdReceta() { return idReceta; }
     public void setIdReceta(String idReceta) { this.idReceta = idReceta; }
 
@@ -61,4 +75,24 @@ public class Receta {
 
     public List<DetalleMedicamento> getMedicamentos() { return medicamentos; }
     public void setMedicamentos(List<DetalleMedicamento> medicamentos) { this.medicamentos = medicamentos; }
+
+    // ===== Métodos de negocio =====
+    public void agregarMedicamento(DetalleMedicamento detalle) {
+        medicamentos.add(detalle);
+    }
+
+    public void eliminarMedicamento(String codigoMedicamento) {
+        Iterator<DetalleMedicamento> it = medicamentos.iterator();
+        while (it.hasNext()) {
+            if (it.next().getCodigoMedicamento().equalsIgnoreCase(codigoMedicamento)) {
+                it.remove();
+                break;
+            }
+        }
+    }
+
+    public void registrar(LocalDate fechaRetiro) {
+        this.estado = "confeccionada";
+        this.fechaRetiro = fechaRetiro;
+    }
 }

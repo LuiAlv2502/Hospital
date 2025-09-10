@@ -21,4 +21,17 @@
         <password>777</password>
         <role>Farmaceuta</role>
     </pharmacist>
+    <admin>
+        <name>123</name>
+        <id>123</id>
+        <password>123</password>
+        <role>Admin</role>
+    </admin>
+    <doctor>
+        <name>555</name>
+        <id>555</id>
+        <password>555</password>
+        <role>Medico</role>
+        <especialidad>555</especialidad>
+    </doctor>
 </usersWrapper>
