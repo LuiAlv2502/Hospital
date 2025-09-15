@@ -8,6 +8,7 @@ public class MedicoPanel extends JFrame{
         setTitle("Administración Hospitalaria");
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
 
         // Creamos el JTabbedPane

@@ -11,9 +11,10 @@ public class AdminPanel extends JFrame {
 
     public AdminPanel() {
         setTitle("Administración Hospitalaria");
-        setSize(900, 600);
+        setSize(900, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
