@@ -15,7 +15,7 @@ public class RecetaDao {
 
     private static final String FILE_PATH = "src/main/resources/recetas.xml";
 
-    private RecetasWrapper loadRecetas() {
+    public RecetasWrapper loadRecetas() {
         try {
             JAXBContext context = JAXBContext.newInstance(RecetasWrapper.class, Receta.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();

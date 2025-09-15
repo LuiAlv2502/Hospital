@@ -117,5 +117,11 @@ public class prescribir extends JPanel {
         JOptionPane.showMessageDialog(this, message);
     }
 
-
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Prescribir Receta");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 500);
+        frame.add(new prescribir());
+        frame.setVisible(true);
+    }
 }

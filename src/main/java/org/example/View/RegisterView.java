@@ -78,4 +78,7 @@ public class RegisterView extends JFrame{
         return campoEspecialidad;
     }
 
+    public JComboBox getComboBoxRolComponent() {
+        return comboBoxRol;
+    }
 }

@@ -6,7 +6,6 @@ import org.example.View.LoginView;
 import org.example.View.RegisterView;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class RegisterController {
 
@@ -32,6 +31,38 @@ public class RegisterController {
 
     private void initController() {
         view.getRegistrarseButton().addActionListener(_ -> register());
+
+        // Listener para el cambio de rol
+        view.getComboBoxRolComponent().addActionListener(e -> {
+            String rol = view.getComboBoxRol();
+
+            switch (rol) {
+                case "Paciente" -> {
+                    view.getEspecialidadtextField().setEnabled(false);
+                    view.getFecha().setEnabled(true);
+                    view.getNombreTextfield().setEnabled(true);
+                    view.getIdtextField().setEnabled(true);
+                    view.getPasswordField1().setEnabled(true);
+                    view.getPasswordField2().setEnabled(true);
+                }
+                case "Medico" -> {
+                    view.getEspecialidadtextField().setEnabled(true);
+                    view.getFecha().setEnabled(false);
+                    view.getNombreTextfield().setEnabled(true);
+                    view.getIdtextField().setEnabled(true);
+                    view.getPasswordField1().setEnabled(true);
+                    view.getPasswordField2().setEnabled(true);
+                }
+                case "Admin", "Farmaceutico" -> {
+                    view.getEspecialidadtextField().setEnabled(false);
+                    view.getFecha().setEnabled(false);
+                    view.getNombreTextfield().setEnabled(true);
+                    view.getIdtextField().setEnabled(true);
+                    view.getPasswordField1().setEnabled(true);
+                    view.getPasswordField2().setEnabled(true);
+                }
+            }
+        });
     }
 
     private void register() {
@@ -40,7 +71,7 @@ public class RegisterController {
         String especialidad = view.getEspecialidadtextField().getText();
         String password1 = new String(view.getPasswordField1().getPassword());
         String password2 = new String(view.getPasswordField2().getPassword());
-        String role = (String) view.getComboBoxRol();
+        String role = view.getComboBoxRol();
         String fecha = view.getFecha().getText();
 
         if (!password1.equals(password2)) {
@@ -64,15 +95,15 @@ public class RegisterController {
                 }
                 case "Medico" -> {
                     newUser = new Medico(username, password1, id, especialidad);
-                    medicoDao.addMedico((Medico) newUser);  // Guardar en DAO específico
+                    medicoDao.addMedico((Medico) newUser);
                 }
                 case "Paciente" -> {
                     newUser = new Paciente(username, password1, id, fecha, "1111");
-                    pacienteDao.addPaciente((Paciente) newUser);  // Guardar en DAO específico
+                    pacienteDao.addPaciente((Paciente) newUser);
                 }
                 case "Farmaceutico" -> {
                     newUser = new Farmaceutico(username, password1, id);
-                    farmaceuticoDao.addFarmaceutico((Farmaceutico) newUser);  // Guardar en DAO específico
+                    farmaceuticoDao.addFarmaceutico((Farmaceutico) newUser);
                 }
                 default -> throw new IllegalStateException("Rol inesperado: " + role);
             }
@@ -85,7 +116,6 @@ public class RegisterController {
             LoginView loginView = new LoginView();
             new LoginController(loginView, usersDao);
             loginView.setVisible(true);
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -69,7 +69,7 @@ public class LoginController {
                 switch (user.getRole().toLowerCase()) {
                     case "admin":
                         AdminPanel adminPanel = new AdminPanel();
-                        AdminControler adminControler = new AdminControler(
+                        PanelAdminController adminControler = new PanelAdminController(
                                 medicoDao,
                                 farmaceuticoDao,
                                 adminPanel.getFarmaceuticoPanel(), // Get the FarmaceuticoPanel
@@ -90,6 +90,11 @@ public class LoginController {
                         break;
                     case "farmaceuta":
                         System.out.println("Abrir vista de farmacéutico");
+                        FarmaceutaPanel farmaceutaPanel = new FarmaceutaPanel();
+                        org.example.Module.Dao.RecetaDao recetaDao = new org.example.Module.Dao.RecetaDao();
+                        org.example.Module.Servicio.DespachoService despachoService = new org.example.Module.Servicio.DespachoService(recetaDao);
+                        PanelFarmaceutaController farmaceutaController = new PanelFarmaceutaController(farmaceutaPanel, despachoService, recetaDao);
+                        farmaceutaPanel.setVisible(true);
                         break;
                     default:
                         JOptionPane.showMessageDialog(view, "Rol de usuario desconocido.", "Error", JOptionPane.ERROR_MESSAGE);

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<recetas>
+    <receta>
+        <idReceta>R-1757478320377</idReceta>
+        <paciente>
+            <name>diego</name>
+            <id>119290953</id>
+            <password>luisdiego</password>
+            <role>Paciente</role>
+            <fechaNacimiento>25/12/2005</fechaNacimiento>
+            <telefono>1111</telefono>
+        </paciente>
+        <fechaConfeccion>2025-09-09</fechaConfeccion>
+        <fechaRetiro>2025-09-11</fechaRetiro>
+        <estado>confeccionada</estado>
+        <detalleMedicamento>
+            <codigoMedicamento>M001</codigoMedicamento>
+            <cantidad>10</cantidad>
+            <indicaciones></indicaciones>
+            <duracionDias>2</duracionDias>
+        </detalleMedicamento>
+    </receta>
+    <receta>
+        <idReceta>R-1757656398751</idReceta>
+        <paciente>
+            <name>diego</name>
+            <id>119290953</id>
+            <password>luisdiego</password>
+            <role>Paciente</role>
+            <fechaNacimiento>25/12/2005</fechaNacimiento>
+            <telefono>1111</telefono>
+        </paciente>
+        <fechaConfeccion>2025-09-11</fechaConfeccion>
+        <fechaRetiro>2025-09-13</fechaRetiro>
+        <estado>entregada</estado>
+        <detalleMedicamento>
+            <codigoMedicamento>M002</codigoMedicamento>
+            <cantidad>3</cantidad>
+            <indicaciones>3</indicaciones>
+            <duracionDias>3</duracionDias>
+        </detalleMedicamento>
+    </receta>
+</recetas>

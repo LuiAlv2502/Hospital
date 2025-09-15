@@ -34,4 +34,10 @@
         <role>Medico</role>
         <especialidad>555</especialidad>
     </doctor>
+    <pharmacist>
+        <name>222</name>
+        <id>222</id>
+        <password>222</password>
+        <role>Farmaceuta</role>
+    </pharmacist>
 </usersWrapper>

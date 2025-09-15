@@ -5,7 +5,7 @@ import org.example.Module.Dao.MedicoDao;
 import org.example.View.FarmaceuticoView;
 import org.example.View.MedicoView;
 
-public class AdminControler {
+public class PanelAdminController {
     MedicoDao medicoDao;
     FarmaceuticoDao farmaceuticoDao;
     FarmaceuticoView farmaceuticoView;
@@ -13,7 +13,7 @@ public class AdminControler {
     MedicoController medicoController;
     FarmaceuticoController farmaceuticoController;
 
-    public AdminControler(MedicoDao medicoDao, FarmaceuticoDao farmaceuticoDao, FarmaceuticoView farmaceuticoView, MedicoView medicoPanel) {
+    public PanelAdminController(MedicoDao medicoDao, FarmaceuticoDao farmaceuticoDao, FarmaceuticoView farmaceuticoView, MedicoView medicoPanel) {
         this.farmaceuticoView = farmaceuticoView;
         this.medicoView = medicoPanel;
         this.medicoDao = medicoDao;
