@@ -12,9 +12,9 @@ public class PacienteController {
     private PacienteView view;
     private PacienteDao dao;
 
-    public PacienteController() {
-        this.view = new PacienteView();
-        this.dao = new PacienteDao();
+    public PacienteController(PacienteView view, PacienteDao dao) {
+        this.view = view;
+        this.dao = dao;
 
         cargarPacientes();
         view.addListener(new ButtonListener());

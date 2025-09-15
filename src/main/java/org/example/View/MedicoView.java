@@ -66,34 +66,43 @@ public class MedicoView extends JPanel {
         model.setColumnIdentifiers(columns);
         tablaDoctores.setModel(model);
 
+        // Labels
+        JLabel labelId = new JLabel("ID:");
+        labelId.setBounds(20, 20, 80, 30);
+        JLabel labelNombre = new JLabel("Nombre:");
+        labelNombre.setBounds(20, 60, 80, 30);
+        JLabel labelEspecialidad = new JLabel("Especialidad:");
+        labelEspecialidad.setBounds(20, 100, 80, 30);
+
+        // Campos
         campoId = new JTextField();
         campoNombre = new JTextField();
         campoEspecialidad = new JTextField();
+        campoId.setBounds(110, 20, 150, 30);
+        campoNombre.setBounds(110, 60, 150, 30);
+        campoEspecialidad.setBounds(110, 100, 150, 30);
 
+        // Botones
         guardarButton = new JButton("Guardar");
         borrarButton = new JButton("Borrar");
         buscarButton = new JButton("Buscar");
-        reporteButton = new JButton("Reporte");
-
-        campoId.setBounds(20, 20, 100, 30);
-        campoNombre.setBounds(20, 60, 150, 30);
-        campoEspecialidad.setBounds(20, 100, 150, 30);
-
-        guardarButton.setBounds(200, 20, 100, 30);
-        borrarButton.setBounds(200, 60, 100, 30);
-        buscarButton.setBounds(200, 100, 100, 30);
-        reporteButton.setBounds(200, 140, 100, 30);
+        guardarButton.setBounds(300, 20, 100, 30);
+        borrarButton.setBounds(300, 60, 100, 30);
+        buscarButton.setBounds(300, 100, 100, 30);
 
         scrollPane.setBounds(20, 180, 850, 150);
 
-        jPanelMedico.add(scrollPane);
+        // Agregar labels y campos
+        jPanelMedico.add(labelId);
         jPanelMedico.add(campoId);
+        jPanelMedico.add(labelNombre);
         jPanelMedico.add(campoNombre);
+        jPanelMedico.add(labelEspecialidad);
         jPanelMedico.add(campoEspecialidad);
         jPanelMedico.add(guardarButton);
         jPanelMedico.add(borrarButton);
         jPanelMedico.add(buscarButton);
-        jPanelMedico.add(reporteButton);
+        jPanelMedico.add(scrollPane);
 
         add(jPanelMedico, BorderLayout.CENTER);
     }

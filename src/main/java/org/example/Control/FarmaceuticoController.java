@@ -97,10 +97,5 @@ public class FarmaceuticoController implements ActionListener {
                 }
             }
         }
-
-        if (src == view.getReporteButton()) {
-            limpiarTabla();
-            cargarTabla();
-        }
     }
 }

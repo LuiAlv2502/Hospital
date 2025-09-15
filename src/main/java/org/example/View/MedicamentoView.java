@@ -73,32 +73,42 @@ public class MedicamentoView extends JPanel {
         model.setColumnIdentifiers(columns);
         tablaMedicamentos.setModel(model);
 
+        // Labels
+        JLabel labelCodigo = new JLabel("Código:");
+        labelCodigo.setBounds(20, 20, 80, 30);
+        JLabel labelNombre = new JLabel("Nombre:");
+        labelNombre.setBounds(20, 60, 80, 30);
+        JLabel labelPresentacion = new JLabel("Presentación:");
+        labelPresentacion.setBounds(20, 100, 100, 30);
+
+        // Campos
         campoCodigo = new JTextField();
         campoNombre = new JTextField();
         campoPresentacion = new JTextField();
         campoBusq = new JTextField();
+        campoCodigo.setBounds(110, 20, 150, 30);
+        campoNombre.setBounds(110, 60, 150, 30);
+        campoPresentacion.setBounds(110, 100, 150, 30);
 
+        // Botones
         guardarButton = new JButton("Guardar");
         borrarButton = new JButton("Borrar");
         modificarButton = new JButton("Modificar");
         buscarButton = new JButton("Buscar");
+        guardarButton.setBounds(300, 20, 100, 30);
+        borrarButton.setBounds(300, 60, 100, 30);
+        modificarButton.setBounds(300, 100, 100, 30);
+        buscarButton.setBounds(300, 140, 100, 30);
 
-        // === Ubicación ===
-        campoCodigo.setBounds(20, 20, 150, 30);
-        campoNombre.setBounds(20, 60, 150, 30);
-        campoPresentacion.setBounds(20, 100, 150, 30);
-
-        guardarButton.setBounds(200, 20, 100, 30);
-        borrarButton.setBounds(200, 60, 100, 30);
-        modificarButton.setBounds(200, 100, 100, 30);
-        buscarButton.setBounds(200, 140, 100, 30);
-
-        campoBusq.setBounds(320, 20, 200, 30);
+        campoBusq.setBounds(420, 20, 200, 30);
         scrollPane.setBounds(20, 200, 850, 150);
 
-        // === Añadir componentes ===
+        // Agregar labels y campos
+        panel.add(labelCodigo);
         panel.add(campoCodigo);
+        panel.add(labelNombre);
         panel.add(campoNombre);
+        panel.add(labelPresentacion);
         panel.add(campoPresentacion);
         panel.add(guardarButton);
         panel.add(borrarButton);

@@ -21,51 +21,70 @@ public class PacienteView extends JPanel {
 
     public PacienteView() {
         setLayout(new BorderLayout());
+        createUIComponents();
 
-        // ==== Panel de formulario ====
-        JPanel formPanel = new JPanel(new GridLayout(5, 2, 10, 10));
+        JPanel panelPaciente = new JPanel();
+        panelPaciente.setLayout(null);
 
-        formPanel.add(new JLabel("ID:"));
+        JLabel labelId = new JLabel("ID:");
+        labelId.setBounds(20, 20, 100, 30);
+        campoId.setBounds(120, 20, 150, 30);
+        panelPaciente.add(labelId);
+        panelPaciente.add(campoId);
+
+        JLabel labelNombre = new JLabel("Nombre:");
+        labelNombre.setBounds(20, 60, 100, 30);
+        campoNombre.setBounds(120, 60, 150, 30);
+        panelPaciente.add(labelNombre);
+        panelPaciente.add(campoNombre);
+
+        JLabel labelPassword = new JLabel("Contraseña:");
+        labelPassword.setBounds(20, 100, 100, 30);
+        campoPassword.setBounds(120, 100, 150, 30);
+        panelPaciente.add(labelPassword);
+        panelPaciente.add(campoPassword);
+
+        JLabel labelFechaNacimiento = new JLabel("Fecha de nacimiento:");
+        labelFechaNacimiento.setBounds(20, 140, 120, 30);
+        campoFechaNacimiento.setBounds(140, 140, 130, 30);
+        panelPaciente.add(labelFechaNacimiento);
+        panelPaciente.add(campoFechaNacimiento);
+
+        JLabel labelTelefono = new JLabel("Teléfono:");
+        labelTelefono.setBounds(20, 180, 100, 30);
+        campoTelefono.setBounds(120, 180, 150, 30);
+        panelPaciente.add(labelTelefono);
+        panelPaciente.add(campoTelefono);
+
+        guardarButton.setBounds(300, 20, 100, 30);
+        borrarButton.setBounds(300, 60, 100, 30);
+        buscarButton.setBounds(300, 100, 100, 30);
+        panelPaciente.add(guardarButton);
+        panelPaciente.add(borrarButton);
+        panelPaciente.add(buscarButton);
+
+        JScrollPane scrollPane = new JScrollPane(tablaPacientes);
+        scrollPane.setBounds(20, 230, 600, 150);
+        panelPaciente.add(scrollPane);
+
+        panelPaciente.setPreferredSize(new Dimension(650, 400));
+        add(panelPaciente, BorderLayout.CENTER);
+    }
+
+    private void createUIComponents() {
         campoId = new JTextField();
-        formPanel.add(campoId);
-
-        formPanel.add(new JLabel("Nombre:"));
         campoNombre = new JTextField();
-        formPanel.add(campoNombre);
-
-        formPanel.add(new JLabel("Contraseña:"));
         campoPassword = new JPasswordField();
-        formPanel.add(campoPassword);
-
-        formPanel.add(new JLabel("Fecha de nacimiento:"));
         campoFechaNacimiento = new JTextField();
-        formPanel.add(campoFechaNacimiento);
-
-        formPanel.add(new JLabel("Teléfono:"));
         campoTelefono = new JTextField();
-        formPanel.add(campoTelefono);
-
-        add(formPanel, BorderLayout.NORTH);
-
-        // ==== Botones ====
-        JPanel buttonPanel = new JPanel();
         guardarButton = new JButton("Guardar");
         borrarButton = new JButton("Borrar");
         buscarButton = new JButton("Buscar");
-
-        buttonPanel.add(guardarButton);
-        buttonPanel.add(borrarButton);
-        buttonPanel.add(buscarButton);
-
-        add(buttonPanel, BorderLayout.CENTER);
-
-        // ==== Tabla ====
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nombre", "Fecha Nacimiento", "Teléfono"}, 0);
         tablaPacientes = new JTable(tableModel);
-        add(new JScrollPane(tablaPacientes), BorderLayout.SOUTH);
+        tablaPacientes.setRowHeight(30);
     }
 
-    // ==== Métodos auxiliares ====
     public String getCampoId() { return campoId.getText(); }
     public String getCampoNombre() { return campoNombre.getText(); }
     public String getCampoPassword() { return new String(campoPassword.getPassword()); }

@@ -55,6 +55,7 @@ public class LoginController {
         MedicoDao medicoDao = new MedicoDao();
         FarmaceuticoDao farmaceuticoDao = new FarmaceuticoDao();
         MedicamentoDao medicamentoDao = new MedicamentoDao();
+        RecetaDao recetaDao = new RecetaDao();
 
         try {
             // Cargar todos los usuarios desde UsersDao
@@ -69,11 +70,17 @@ public class LoginController {
                 switch (user.getRole().toLowerCase()) {
                     case "admin":
                         AdminPanel adminPanel = new AdminPanel();
-                        PanelAdminController adminControler = new PanelAdminController(
-                                medicoDao,
-                                farmaceuticoDao,
-                                adminPanel.getFarmaceuticoPanel(), // Get the FarmaceuticoPanel
-                                adminPanel.getMedicoPanel()         // Get the MedicoPanel
+                        PanelAdminController adminController = new PanelAdminController(
+                                medicoDao,                          // 1️ MedicoDao
+                                farmaceuticoDao,                    // 2️ FarmaceuticoDao
+                                adminPanel.getFarmaceuticoPanel(),  // 3️ FarmaceuticoView
+                                adminPanel.getMedicoPanel(),        // 4️ MedicoView
+                                adminPanel.getPacientePanel(),      // 5️ PacienteView
+                                pacienteDao,                         // 6 PacienteDao
+                                recetaDao,                          // 7️ RecetaDao
+                                adminPanel.getRecetaView(),         // 8️ RecetaView
+                                medicamentoDao,                     // 9️ MedicamentoDao
+                                adminPanel.getMedicamentoView()     // 10️ MedicamentoView
                         );
                         adminPanel.setVisible(true);
                         System.out.println("Abrir vista de admin");
@@ -91,7 +98,6 @@ public class LoginController {
                     case "farmaceuta":
                         System.out.println("Abrir vista de farmacéutico");
                         FarmaceutaPanel farmaceutaPanel = new FarmaceutaPanel();
-                        org.example.Module.Dao.RecetaDao recetaDao = new org.example.Module.Dao.RecetaDao();
                         org.example.Module.Servicio.DespachoService despachoService = new org.example.Module.Servicio.DespachoService(recetaDao);
                         PanelFarmaceutaController farmaceutaController = new PanelFarmaceutaController(farmaceutaPanel, despachoService, recetaDao);
                         farmaceutaPanel.setVisible(true);

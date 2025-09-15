@@ -14,10 +14,9 @@ public class RecetaController {
     private RecetaView view;
     private RecetaDao dao;
 
-    public RecetaController() {
-        this.view = new RecetaView();
-        this.dao = new RecetaDao();
-
+    public RecetaController(RecetaView view, RecetaDao dao) {
+        this.view = view;
+        this.dao = dao;
         cargarRecetas();
         view.getBuscarButton().addActionListener(new ButtonListener());
         view.getVerDetalleButton().addActionListener(new ButtonListener());
@@ -30,7 +29,7 @@ public class RecetaController {
             Object[] row = {
                     r.getIdReceta(),
                     r.getPaciente() != null ? r.getPaciente().getName() : "N/A",
-                    r.getMedico() != null ? r.getMedico().getName() : "N/A",
+                    (r.getMedico() != null && r.getMedico().getName() != null) ? r.getMedico().getName() : "N/A",
                     r.getFechaConfeccion() != null ? r.getFechaConfeccion().format(fmt) : "",
                     r.getEstado()
             };
@@ -58,7 +57,7 @@ public class RecetaController {
                                 Object[] row = {
                                         r.getIdReceta(),
                                         r.getPaciente() != null ? r.getPaciente().getName() : "N/A",
-                                        r.getMedico() != null ? r.getMedico().getName() : "N/A",
+                                        (r.getMedico() != null && r.getMedico().getName() != null) ? r.getMedico().getName() : "N/A",
                                         r.getFechaConfeccion() != null ? r.getFechaConfeccion().format(fmt) : "",
                                         r.getEstado()
                                 };
@@ -77,7 +76,7 @@ public class RecetaController {
                     StringBuilder sb = new StringBuilder();
                     sb.append("ID: ").append(r.getIdReceta()).append("\n");
                     sb.append("Paciente: ").append(r.getPaciente() != null ? r.getPaciente().getName() : "N/A").append("\n");
-                    sb.append("Médico: ").append(r.getMedico() != null ? r.getMedico().getName() : "N/A").append("\n");
+                    sb.append("Médico: ").append((r.getMedico() != null && r.getMedico().getName() != null) ? r.getMedico().getName() : "N/A").append("\n");
                     sb.append("Fecha Confección: ").append(r.getFechaConfeccion()).append("\n");
                     sb.append("Fecha Retiro: ").append(r.getFechaRetiro() != null ? r.getFechaRetiro() : "N/A").append("\n");
                     sb.append("Estado: ").append(r.getEstado()).append("\n");

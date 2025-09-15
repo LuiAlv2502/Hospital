@@ -12,9 +12,9 @@ public class MedicamentosController {
     private MedicamentoView view;
     private MedicamentoDao dao;
 
-    public MedicamentosController() {
-        this.view = new MedicamentoView();
-        this.dao = new MedicamentoDao();
+    public MedicamentosController(MedicamentoView view, MedicamentoDao dao) {
+        this.view = view;
+        this.dao = dao;
 
         cargarMedicamentos();
         view.addListener(new ButtonListener());
@@ -24,7 +24,7 @@ public class MedicamentosController {
         return view;
     }
 
-    // === Cargar medicamentos en la tabla ===
+
     private void cargarMedicamentos() {
         List<Medicamento> medicamentos = dao.loadMedicamentos().getMedicamentos();
         for (Medicamento m : medicamentos) {
@@ -33,7 +33,7 @@ public class MedicamentosController {
         }
     }
 
-    // === Manejo de botones ===
+
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -84,7 +84,7 @@ public class MedicamentosController {
                 if (busqueda.isEmpty()) {
                     cargarMedicamentos();
                 } else {
-                    // Primero intentar buscar por código
+                    // buscar por código
                     dao.findByCodigo(busqueda).ifPresent(m -> {
                         Object[] row = { m.getCodigo(), m.getNombre(), m.getPresentacion() };
                         view.modelAddRow(row);
