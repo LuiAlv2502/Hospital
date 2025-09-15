@@ -21,4 +21,18 @@
         <role>Medico</role>
         <especialidad>555</especialidad>
     </medico>
+    <medico>
+        <name>Caliche</name>
+        <id>6767</id>
+        <password>6767</password>
+        <role>Medico</role>
+        <especialidad>Joder</especialidad>
+    </medico>
+    <medico>
+        <name>333</name>
+        <id>7777</id>
+        <password>7777</password>
+        <role>Medico</role>
+        <especialidad>3333</especialidad>
+    </medico>
 </medicosWrapper>
