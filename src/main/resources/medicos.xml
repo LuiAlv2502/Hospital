@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <medicosWrapper>
     <medico>
-        <name>maleta</name>
-        <id>1111</id>
-        <password>111</password>
-        <role>Medico</role>
-        <especialidad>Cardiología</especialidad>
-    </medico>
-    <medico>
         <name>juan</name>
-        <id>juan</id>
-        <password>juan</password>
+        <id>2525</id>
+        <password>juan123</password>
         <role>Medico</role>
-        <especialidad>juan</especialidad>
+        <especialidad>General</especialidad>
     </medico>
     <medico>
         <name>555</name>
@@ -20,19 +13,5 @@
         <password>555</password>
         <role>Medico</role>
         <especialidad>555</especialidad>
-    </medico>
-    <medico>
-        <name>Caliche</name>
-        <id>6767</id>
-        <password>6767</password>
-        <role>Medico</role>
-        <especialidad>Joder</especialidad>
-    </medico>
-    <medico>
-        <name>333</name>
-        <id>7777</id>
-        <password>7777</password>
-        <role>Medico</role>
-        <especialidad>3333</especialidad>
     </medico>
 </medicosWrapper>

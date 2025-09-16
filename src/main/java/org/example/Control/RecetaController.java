@@ -64,32 +64,29 @@ public class RecetaController {
                                 view.modelAddRow(row);
                             });
                 }
-            }
-
-
-
-            else if (e.getSource() == view.getVerDetalleButton()) {
-            int i = view.tableGetSelectedRow();
-            if (i >= 0) {
-                String id = (String) view.getTablaRecetas().getValueAt(i, 0);
-                dao.findById(id).ifPresentOrElse(r -> {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("ID: ").append(r.getIdReceta()).append("\n");
-                    sb.append("Paciente: ").append(r.getPaciente() != null ? r.getPaciente().getName() : "N/A").append("\n");
-                    sb.append("Médico: ").append((r.getMedico() != null && r.getMedico().getName() != null) ? r.getMedico().getName() : "N/A").append("\n");
-                    sb.append("Fecha Confección: ").append(r.getFechaConfeccion()).append("\n");
-                    sb.append("Fecha Retiro: ").append(r.getFechaRetiro() != null ? r.getFechaRetiro() : "N/A").append("\n");
-                    sb.append("Estado: ").append(r.getEstado()).append("\n");
-                    sb.append("Medicamentos: \n");
-                    r.getMedicamentos().forEach(m -> sb.append("- ").append(m.getNombre()).append(" x").append(m.getCantidad()).append("\n"));
-                    JOptionPane.showMessageDialog(view, sb.toString(), "Detalle Receta", JOptionPane.INFORMATION_MESSAGE);
-                }, () -> view.mostrarError("Receta no encontrada"));
-            } else {
-                view.mostrarError("Seleccione una receta en la tabla");
+            } else if (e.getSource() == view.getVerDetalleButton()) {
+                int i = view.tableGetSelectedRow();
+                if (i >= 0) {
+                    String id = (String) view.getTablaRecetas().getValueAt(i, 0);
+                    dao.findById(id).ifPresentOrElse(r -> {
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("ID: ").append(r.getIdReceta()).append("\n");
+                        sb.append("Paciente: ").append(r.getPaciente() != null ? r.getPaciente().getName() : "N/A").append("\n");
+                        sb.append("Médico: ").append((r.getMedico() != null && r.getMedico().getName() != null) ? r.getMedico().getName() : "N/A").append("\n");
+                        sb.append("Fecha Confección: ").append(r.getFechaConfeccion()).append("\n");
+                        sb.append("Fecha Retiro: ").append(r.getFechaRetiro() != null ? r.getFechaRetiro() : "N/A").append("\n");
+                        sb.append("Estado: ").append(r.getEstado()).append("\n");
+                        sb.append("Medicamentos: \n");
+                        r.getMedicamentos().forEach(m -> sb.append("- ").append(m.getNombre()).append(" x").append(m.getCantidad()).append("\n"));
+                        JOptionPane.showMessageDialog(view, sb.toString(), "Detalle Receta", JOptionPane.INFORMATION_MESSAGE);
+                    }, () -> view.mostrarError("Receta no encontrada"));
+                } else {
+                    view.mostrarError("Seleccione una receta en la tabla");
+                }
             }
         }
     }
-}
+
 
     public RecetaView getView() {
         return view;

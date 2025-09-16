@@ -22,6 +22,9 @@ public class FarmaceutaPanel extends JFrame {
         tabbedPane.addTab("Despacho", despachoView);
         tabbedPane.addTab("Historial de Recetas",recetaView );
 
+        dashboard dashboardView = new dashboard();
+        new org.example.Control.DashboardController(dashboardView);
+        tabbedPane.addTab("Indicadores", dashboardView);
 
 
         add(tabbedPane);
@@ -35,4 +38,3 @@ public class FarmaceutaPanel extends JFrame {
         return recetaView;
     }
 }
-

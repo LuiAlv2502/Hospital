@@ -23,14 +23,15 @@ public class AdminPanel extends JFrame {
         pacienteView = new PacienteView();
         recetaView = new RecetaView();
         medicamentoView = new MedicamentoView();
-
+        dashboard dashboardView = new dashboard();
+        new org.example.Control.DashboardController(dashboardView);
 
         tabbedPane.addTab("Farmacéuticos", farmaceuticoView);
         tabbedPane.addTab("Médicos", medicoView);
         tabbedPane.addTab("Pacientes",pacienteView);
         tabbedPane.addTab("Historial de Recetas",recetaView);
         tabbedPane.addTab("Medicamentos",medicamentoView);
-
+        tabbedPane.addTab("Indicadores", dashboardView);
 
         add(tabbedPane);
         setVisible(true);

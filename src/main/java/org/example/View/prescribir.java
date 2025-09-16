@@ -10,11 +10,12 @@ import java.util.List;
 public class prescribir extends JPanel {
 
     // Campos de entrada
-    private JTextField txtPaciente;
-    private JTextField txtMedicamento;
+    private JComboBox<String> comboPacientes;
+    private JComboBox<String> comboMedicamentos;
     private JTextField txtCantidad;
     private JTextField txtIndicaciones;
     private JTextField txtDias;
+
 
     // Botones
     private JButton btnBuscarPaciente;
@@ -35,18 +36,16 @@ public class prescribir extends JPanel {
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
 
         // Campos de formulario
-        txtPaciente = new JTextField();
-        txtMedicamento = new JTextField();
+        comboPacientes = new JComboBox<>();
+        comboMedicamentos = new JComboBox<>();
         txtCantidad = new JTextField();
         txtIndicaciones = new JTextField();
         txtDias = new JTextField();
 
-        formPanel.add(new JLabel("ID Paciente:"));
-        formPanel.add(txtPaciente);
-
-        formPanel.add(new JLabel("Código Medicamento:"));
-        formPanel.add(txtMedicamento);
-
+        formPanel.add(new JLabel("Paciente:"));
+        formPanel.add(comboPacientes);
+        formPanel.add(new JLabel("Medicamento:"));
+        formPanel.add(comboMedicamentos);
         formPanel.add(new JLabel("Cantidad:"));
         formPanel.add(txtCantidad);
 
@@ -84,11 +83,11 @@ public class prescribir extends JPanel {
     }
 
     // Métodos que usará el controlador
-    public JTextField getTxtPaciente() { return txtPaciente; }
-    public JTextField getTxtMedicamento() { return txtMedicamento; }
+
     public JTextField getTxtCantidad() { return txtCantidad; }
     public JTextField getTxtIndicaciones() { return txtIndicaciones; }
     public JTextField getTxtDias() { return txtDias; }
+
 
     public JButton getBtnBuscarPaciente() { return btnBuscarPaciente; }
     public JButton getBtnAgregar() { return btnAgregar; }
@@ -96,6 +95,8 @@ public class prescribir extends JPanel {
     public JButton getBtnRegistrar() { return btnRegistrar; }
 
     public JTable getTblMedicamentos() { return tblMedicamentos; }
+    public JComboBox<String> getComboPacientes() { return comboPacientes; }
+    public JComboBox<String> getComboMedicamentos() { return comboMedicamentos; }
 
     public void setTableModel(List<DetalleMedicamento> items) {
         tableModel.setRowCount(0); // limpia tabla

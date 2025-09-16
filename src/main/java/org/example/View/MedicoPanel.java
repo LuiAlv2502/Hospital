@@ -16,9 +16,12 @@ public class MedicoPanel extends JFrame{
 
         this.prescribir = new prescribir();
         this.recetaView = new RecetaView();
+        dashboard dashboardView = new dashboard();
+        new org.example.Control.DashboardController(dashboardView);
 
         tabbedPane.addTab("Médicos", prescribir);
         tabbedPane.addTab("Historial de Recetas", recetaView);
+        tabbedPane.addTab("Indicadores", dashboardView);
 
         add(tabbedPane);
         setVisible(true);

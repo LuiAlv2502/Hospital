@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <recetas>
     <receta>
-        <idReceta>R-1757478320377</idReceta>
-        <paciente>
-            <name>diego</name>
-            <id>119290953</id>
-            <password>luisdiego</password>
-            <role>Paciente</role>
-            <fechaNacimiento>25/12/2005</fechaNacimiento>
-            <telefono>1111</telefono>
-        </paciente>
-        <fechaConfeccion>2025-09-09</fechaConfeccion>
-        <fechaRetiro>2025-09-11</fechaRetiro>
-        <estado>confeccionada</estado>
-        <detalleMedicamento>
-            <codigoMedicamento>M001</codigoMedicamento>
-            <cantidad>10</cantidad>
-            <indicaciones></indicaciones>
-            <duracionDias>2</duracionDias>
-        </detalleMedicamento>
-    </receta>
-    <receta>
-        <idReceta>R-1757656398751</idReceta>
-        <paciente>
-            <name>diego</name>
-            <id>119290953</id>
-            <password>luisdiego</password>
-            <role>Paciente</role>
-            <fechaNacimiento>25/12/2005</fechaNacimiento>
-            <telefono>1111</telefono>
-        </paciente>
-        <fechaConfeccion>2025-09-11</fechaConfeccion>
-        <fechaRetiro>2025-09-13</fechaRetiro>
-        <estado>entregada</estado>
-        <detalleMedicamento>
-            <codigoMedicamento>M002</codigoMedicamento>
-            <cantidad>3</cantidad>
-            <indicaciones>3</indicaciones>
-            <duracionDias>3</duracionDias>
-        </detalleMedicamento>
-    </receta>
-    <receta>
-        <idReceta>R-1757994379278</idReceta>
+        <idReceta>R-1758000356703</idReceta>
         <paciente>
             <name>diego</name>
             <id>119290953</id>
@@ -51,6 +11,46 @@
             <telefono>1111</telefono>
         </paciente>
         <fechaConfeccion>2025-09-15</fechaConfeccion>
+        <fechaRetiro>2025-09-17</fechaRetiro>
+        <estado>entregada</estado>
+        <detalleMedicamento>
+            <codigoMedicamento>M001</codigoMedicamento>
+            <cantidad>10</cantidad>
+            <indicaciones>una por dia</indicaciones>
+            <duracionDias>10</duracionDias>
+        </detalleMedicamento>
+    </receta>
+    <receta>
+        <idReceta>R-1758001248223</idReceta>
+        <paciente>
+            <name>123</name>
+            <id>1234</id>
+            <password>123</password>
+            <role>Paciente</role>
+            <fechaNacimiento>123</fechaNacimiento>
+            <telefono>1111</telefono>
+        </paciente>
+        <fechaConfeccion>2025-09-15</fechaConfeccion>
         <estado>en_proceso</estado>
+    </receta>
+    <receta>
+        <idReceta>R-1758002041236</idReceta>
+        <paciente>
+            <name>123</name>
+            <id>1234</id>
+            <password>123</password>
+            <role>Paciente</role>
+            <fechaNacimiento>123</fechaNacimiento>
+            <telefono>1111</telefono>
+        </paciente>
+        <fechaConfeccion>2025-09-15</fechaConfeccion>
+        <fechaRetiro>2025-09-17</fechaRetiro>
+        <estado>entregada</estado>
+        <detalleMedicamento>
+            <codigoMedicamento>M002</codigoMedicamento>
+            <cantidad>2000</cantidad>
+            <indicaciones>de porvida</indicaciones>
+            <duracionDias>2000</duracionDias>
+        </detalleMedicamento>
     </receta>
 </recetas>
