@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class FarmaceutaPanel extends JFrame {
     private DespachoView despachoView;
+    private RecetaView recetaView;
 
     public FarmaceutaPanel() {
         setTitle("Panel Farmacéutico");
@@ -17,7 +18,9 @@ public class FarmaceutaPanel extends JFrame {
 
 
         despachoView = new DespachoView();
+        recetaView = new RecetaView();
         tabbedPane.addTab("Despacho", despachoView);
+        tabbedPane.addTab("Historial de Recetas",recetaView );
 
 
 
@@ -27,6 +30,9 @@ public class FarmaceutaPanel extends JFrame {
 
     public DespachoView getDespachoPanel() {
         return despachoView;
+    }
+    public RecetaView getRecetaView() {
+        return recetaView;
     }
 }
 

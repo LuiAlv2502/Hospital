@@ -40,4 +40,17 @@
             <duracionDias>3</duracionDias>
         </detalleMedicamento>
     </receta>
+    <receta>
+        <idReceta>R-1757994379278</idReceta>
+        <paciente>
+            <name>diego</name>
+            <id>119290953</id>
+            <password>luisdiego</password>
+            <role>Paciente</role>
+            <fechaNacimiento>25/12/2005</fechaNacimiento>
+            <telefono>1111</telefono>
+        </paciente>
+        <fechaConfeccion>2025-09-15</fechaConfeccion>
+        <estado>en_proceso</estado>
+    </receta>
 </recetas>

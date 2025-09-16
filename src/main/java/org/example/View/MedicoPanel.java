@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class MedicoPanel extends JFrame{
     prescribir prescribir;
+    RecetaView recetaView;
     public MedicoPanel() {
         setTitle("Administración Hospitalaria");
         setSize(900, 600);
@@ -11,17 +12,22 @@ public class MedicoPanel extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
 
-        // Creamos el JTabbedPane
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        // Agregamos las pestañas
         this.prescribir = new prescribir();
+        this.recetaView = new RecetaView();
+
         tabbedPane.addTab("Médicos", prescribir);
+        tabbedPane.addTab("Historial de Recetas", recetaView);
 
         add(tabbedPane);
         setVisible(true);
     }
     public prescribir getPrescribir() {
         return this.prescribir;
+    }
+
+    public RecetaView getRecetaView() {
+        return this.recetaView;
     }
 }

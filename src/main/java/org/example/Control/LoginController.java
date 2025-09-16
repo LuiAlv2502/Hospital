@@ -89,7 +89,7 @@ public class LoginController {
                         System.out.println("Abrir vista de médico");
                         MedicoPanel medicoPanel = new MedicoPanel();
                         org.example.Module.Servicio.PrescripcionService prescripcionController = new org.example.Module.Servicio.PrescripcionService(pacienteDao, medicoDao, new RecetaDao(), medicamentoDao);
-                        panelMedicoController panelMedicoController = new panelMedicoController(medicoPanel.getPrescribir(), prescripcionController);
+                        panelMedicoController panelMedicoController = new panelMedicoController(medicoPanel.getPrescribir(), prescripcionController, recetaDao, medicoPanel.getRecetaView());
                         medicoPanel.setVisible(true);
                         break;
                     case "paciente":
@@ -98,8 +98,9 @@ public class LoginController {
                     case "farmaceuta":
                         System.out.println("Abrir vista de farmacéutico");
                         FarmaceutaPanel farmaceutaPanel = new FarmaceutaPanel();
+                        RecetaView recetaView = farmaceutaPanel.getRecetaView();
                         org.example.Module.Servicio.DespachoService despachoService = new org.example.Module.Servicio.DespachoService(recetaDao);
-                        PanelFarmaceutaController farmaceutaController = new PanelFarmaceutaController(farmaceutaPanel, despachoService, recetaDao);
+                        PanelFarmaceutaController farmaceutaController = new PanelFarmaceutaController(farmaceutaPanel, despachoService, recetaDao, recetaView);
                         farmaceutaPanel.setVisible(true);
                         break;
                     default:
